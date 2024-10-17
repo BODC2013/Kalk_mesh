@@ -108,4 +108,4 @@ class Test:
         return boom
 
 root = Test('aнтон', '09г2с', 'Чё', )
-low = Calculate(name='Пупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
+low = Calculate(name='ПУупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
