@@ -107,5 +107,6 @@ class Test:
         boom = Calculate(self.name, self.steel_grade, self.brand, self.breaking_force)
         return boom
 
-root = Test('aнтон', '09г2с', 'Чё', )
-low = Calculate(name='ПУупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
+root= Test('aнтон', '09г2с', 'Чё', )
+low= Calculate(name='ПУупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
+p = 'z pft,fkcz nj rjvbnbnm'
