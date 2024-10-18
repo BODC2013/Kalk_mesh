@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import List
 from random import randrange
-
+from models import CalculateModel
 #class SteelGrade(Enum):
 #    DOPED = '09Г2С'
 #    NODOPED = 'Ст3'
@@ -19,15 +19,14 @@ class Calculate:
 
     bend_angle: int
 
-    def __init__(self, name: str, steel_grade, brand: object, breaking_force: List[float],
-                 thickness_initial_plate= 8, sample_thickness = 8, width_thickness= 20):
-        self.name = name
-        self.steel_grade = steel_grade
-        self.brand = brand
-        self.breaking_force = breaking_force
-        self.thickness_initial_plate = thickness_initial_plate
-        self.sample_thickness = sample_thickness
-        self.width_thickness = width_thickness
+    def __init__(self, cmd: CalculateModel):
+        self.name = cmd.name
+        self.steel_grade = cmd.steel_grade
+        self.brand = cmd.brand
+        self.breaking_force = cmd.breaking_force
+        self.thickness_initial_plate = cmd.thickness_initial_plate
+        self.sample_thickness = cmd.sample_thickness
+        self.width_thickness = cmd.width_thickness
         self.temporary_resistance = []
         self.value_calculator()
         self.sorting()
