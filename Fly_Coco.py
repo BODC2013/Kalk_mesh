@@ -1,5 +1,10 @@
+from enum import Enum
 from typing import List
 from random import randrange
+
+#class SteelGrade(Enum):
+#    DOPED = '09Г2С'
+#    NODOPED = 'Ст3'
 
 class Calculate:
     bend_angle_doped = 120
@@ -26,6 +31,7 @@ class Calculate:
         self.temporary_resistance = []
         self.value_calculator()
         self.sorting()
+        self.res_calculation = {}
 
     def value_calculator(self):
         for i in self.breaking_force:
@@ -35,10 +41,10 @@ class Calculate:
 #        print("Значение временного сопротивления:", self.temporary_resistance)
 
     def sorting(self):
-        if self.steel_grade.lower() == '09г2с':
+        if self.steel_grade.upper() == '09Г2С':
             standard_resistance = self.temporary_resistance_standart_doped.copy()
             self.bend_angle = self.bend_angle_doped
-        elif self.steel_grade.lower() == 'ст3':
+        elif self.steel_grade.upper() == 'СТ3':
             standard_resistance = self.temporary_resistance_standart_NOdoped.copy()
             self.bend_angle = self.bend_angle_NOdoped
         else:
@@ -52,13 +58,17 @@ class Calculate:
                         if i[0] <= temp <= i[1]:
                             print('Значение', temp, 'соответствует ГОСТу')
                         else:
+
                             print('Значение', temp, 'НЕ СООТВЕТСТВУЕТ ГОСТу')
 
-        print('угол загиба ', self.bend_angle, 'градусов')
 
-        print(f"Имя: {self.name}, Марка стали: {self.steel_grade}, "
-              f"Прочность: {self.breaking_force}, Толщина пластины: {self.thickness_initial_plate}")
-
+       # print('угол загиба ', self.bend_angle, 'градусов')
+        self.res_calculation = {'Имя': self.name, 'Марка стали': self.steel_grade,
+                                'Клейио':self.brand,'Толщина исходной пластины':self.thickness_initial_plate,
+                                'Толщина образца': self.sample_thickness, 'Ширина образца': self.width_thickness
+                                ,'Разрушающее усилие':self.breaking_force, 'Предел прочности': self.temporary_resistance,
+                                'Угол загиба в градусах': self.bend_angle}
+        print(self.res_calculation)
 
 class Test:
     range_doped = {
@@ -80,9 +90,9 @@ class Test:
         self.meaning_calculate()
 
     def meaning_calculate(self):
-        if self.steel_grade.lower() == '09г2с':
+        if self.steel_grade.upper() == '09Г2С':
             self.range_test = self.range_doped
-        elif self.steel_grade.lower() == 'ст3':
+        elif self.steel_grade.upper () == 'СТ3':
             self.range_test = self.range_NOdoped
         else:
             print('Введите корректную марку стали')
@@ -94,7 +104,7 @@ class Test:
 #                print('Тестовое значение', 'толщины стали', 'принято в расчет')
                 break
         else:
-            print('Тестовое значение', 'не соответствует ГОСТу')
+            print('Толщина образца', 'не соответствует ГОСТу(Test)')
             return
 
         i = [randrange(self.range_values_test[0] , self.range_values_test[1])
@@ -104,9 +114,8 @@ class Test:
 
 
 
-        boom = Calculate(self.name, self.steel_grade, self.brand, self.breaking_force)
-        return boom
+        test_job = Calculate(self.name, self.steel_grade, self.brand, self.breaking_force)
+        return test_job
 
-root= Test('aнтон', '09г2с', 'Чё', )
-low= Calculate(name='ПУупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
-p = 'z pft,fkcz nj rjvbnbnm'
+root= Test('aнтон', 'ст3', 'Чё', )
+#low= Calculate(name='Пупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
