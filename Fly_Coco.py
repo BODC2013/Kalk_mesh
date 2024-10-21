@@ -2,9 +2,13 @@ from enum import Enum
 from typing import List
 from random import randrange
 from models import CalculateModel
+
+#a = "09Г2С"
+#SteelGrade(a).value
+#'09Г2С'
 #class SteelGrade(Enum):
 #    DOPED = '09Г2С'
-#    NODOPED = 'Ст3'
+ #   NODOPED = 'Ст3'
 
 class Calculate:
     bend_angle_doped = 120
@@ -69,52 +73,59 @@ class Calculate:
                                 'Угол загиба в градусах': self.bend_angle}
         print(self.res_calculation)
 
-class Test:
-    range_doped = {
-        (0, 10): [[495, 520]], (11, 20): [[475, 500]], (21, 32): [[465, 490]],
-        (33, 60): [[455, 480]], (61, 80): [[445, 470]], (81, 160): [[435, 460]]
-    }
-    range_NOdoped = {(0, 10): [[385, 489]], (11, 100): [[375, 478]]}
+# class Test:
+#     range_doped = {
+#         (0, 10): [[495, 520]], (11, 20): [[475, 500]], (21, 32): [[465, 490]],
+#         (33, 60): [[455, 480]], (61, 80): [[445, 470]], (81, 160): [[435, 460]]
+#     }
+#     range_NOdoped = {(0, 10): [[385, 489]], (11, 100): [[375, 478]]}
+#
+#     def init (self, name: str, steel_grade: str, brand: str, thickness_initial_plate= 8, sample_thickness = 8, width_thickness= 20):
+#         self.name = name
+#         self.steel_grade = steel_grade
+#         self.brand = brand
+#         self.thickness_initial_plate = thickness_initial_plate
+#         self.range_test = {}
+#         self.range_values_test = []
+#         self.breaking_force = []
+#         self.sample_thickness = sample_thickness
+#         self.width_thickness = width_thickness
+#         return self.meaning_calculate()
+#
+#     def meaning_calculate(self):
+#         if self.steel_grade.upper() == '09Г2С':
+#             self.range_test = self.range_doped
+#         elif self.steel_grade.upper () == 'СТ3':
+#             self.range_test = self.range_NOdoped
+#         else:
+#             print('Введите корректную марку стали')
+#             return
+#
+#         for range_selection in self.range_test.keys():
+#             if range_selection[0] <= self.thickness_initial_plate <= range_selection[1]:
+#                 self.range_values_test = self.range_test[range_selection][0]
+# #                print('Тестовое значение', 'толщины стали', 'принято в расчет')
+#                 break
+#         else:
+#             print('Толщина образца', 'не соответствует ГОСТу(Test)')
+#             return
+#
+#         i = [randrange(self.range_values_test[0] , self.range_values_test[1])
+#              for _ in range(3)]
+#         self.breaking_force = [round(value / 1000 * self.thickness_initial_plate * self.width_thickness, 1) for value in i]
+# #        print(self.breaking_force)
+#
+#
+#
+#         test_job = Calculate(self.name, self.steel_grade, self.brand, self.breaking_force, self.thickness_initial_plate, self.sample_thickness, self.width_thickness)
+#         return test_job
 
-    def __init__ (self, name: str, steel_grade: str, brand: str, thickness_initial_plate= 8, sample_thickness = 8, width_thickness= 20):
-        self.name = name
-        self.steel_grade = steel_grade
-        self.brand = brand
-        self.thickness_initial_plate = thickness_initial_plate
-        self.range_test = {}
-        self.range_values_test = []
-        self.breaking_force = []
-        self.sample_thickness = sample_thickness
-        self.width_thickness = width_thickness
-        self.meaning_calculate()
 
-    def meaning_calculate(self):
-        if self.steel_grade.upper() == '09Г2С':
-            self.range_test = self.range_doped
-        elif self.steel_grade.upper () == 'СТ3':
-            self.range_test = self.range_NOdoped
-        else:
-            print('Введите корректную марку стали')
-            return
+#root= Test('aнтон', 'ст3', 'Чё', )
+#low= Calculate(cmd=CalculateModel(name='Пупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100], thickness_initial_plate= 8,
+#                                  sample_thickness=8, width_thickness=20 ))
+low = Calculate(
+    cmd=CalculateModel(name="Пупс", steel_grade="09Г2С",brand="Бе", breaking_force=[100, 100, 100],
 
-        for range_selection in self.range_test.keys():
-            if range_selection[0] <= self.thickness_initial_plate <= range_selection[1]:
-                self.range_values_test = self.range_test[range_selection][0]
-#                print('Тестовое значение', 'толщины стали', 'принято в расчет')
-                break
-        else:
-            print('Толщина образца', 'не соответствует ГОСТу(Test)')
-            return
-
-        i = [randrange(self.range_values_test[0] , self.range_values_test[1])
-             for _ in range(3)]
-        self.breaking_force = [round(value / 1000 * self.thickness_initial_plate * self.width_thickness, 1) for value in i]
-#        print(self.breaking_force)
-
-
-
-        test_job = Calculate(self.name, self.steel_grade, self.brand, self.breaking_force)
-        return test_job
-
-root= Test('aнтон', 'ст3', 'Чё', )
-#low= Calculate(name='Пупс', steel_grade='09Г2С', brand='Бе', breaking_force=[100, 100, 100])
+    )
+)
