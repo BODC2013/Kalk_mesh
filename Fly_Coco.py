@@ -1,7 +1,8 @@
 from enum import Enum
 from typing import List
 from random import randrange
-from models import CalculateModel, TestModel
+#from models import CalculateModel, TestModel
+from models import TestModel
 
 
 #a = "09Г2С"
@@ -133,7 +134,7 @@ class Test:
 
 
 
-root = Test(cmd=TestModel(name="Lilit", steel_grade="09Г2С", brand="vi"))
+root = Test(cmd=TestModel(name="Lilit", steel_grade="09г2с", brand="vi"))
 # low = Calculate(
 #    cmd=CalculateModel(name="Пупс" ,
 #                       steel_grade="09Г2С",brand="Бе",

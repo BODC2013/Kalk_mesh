@@ -1,7 +1,8 @@
 from unittest import TestProgram
 #from Fly_Coco import Calculate
 from Fly_Coco import Test
-from models import CalculateModel, TestModel
+#from models import CalculateModel, TestModel
+from models import  TestModel
 
 
 #calculate = Calculate(
