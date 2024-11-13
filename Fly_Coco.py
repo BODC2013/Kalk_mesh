@@ -3,8 +3,6 @@ from typing import List
 from random import randrange
 from models import CalculateModel, TestModel
 
-
-
 #a = "09Г2С"
 #SteelGrade(a).value
 #'09Г2С'
@@ -118,9 +116,6 @@ class Test:
         print(self.breaking_force)
 
 
-
-
-#        test_job= Calculate
         test_job = Calculate(
             cmd=CalculateModel(
                 name=self.name,
@@ -129,14 +124,14 @@ class Test:
                 breaking_force=self.breaking_force,
                 )
             )
-        #     return test_job
+
 
 
 
 
 root = Test(cmd=TestModel(name="Lilit", steel_grade="09Г2С", brand="vi"))
-# low = Calculate(
-#    cmd=CalculateModel(name="Пупс" ,
-#                       steel_grade="09Г2С",brand="Бе",
-#                       breaking_force=[100.0, 100.0, 100.0]
-#                       ))
+low = Calculate(
+  cmd=CalculateModel(name="Пупс" ,
+                      steel_grade="09Г2С",brand="Бе",
+                      breaking_force=[100.0, 100.0, 100.0]
+                      ))
