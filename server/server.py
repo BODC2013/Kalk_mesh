@@ -1,25 +1,20 @@
 from fastapi import FastAPI
-
-
+from routers.router_models import RouterContainer
 
 class Server:
+    debug = True
+    def __init__(self):
+        self.__app = self.__create_app()
+        self.register_router()
 
-    def ___init__(self, app: FastAPI):
-        self.__app = app
+    def __create_app(self) -> FastAPI:
+        """сюда можно добавлять кастомные хендлеры"""
+        return FastAPI(
+            debug=self.debug
+        )
 
-    def __call__(self):
+    def register_router(self):
+        RouterContainer.save_router(app=self.__app)
+
+    def get_app(self):
         return self.__app
-
-    @staticmethod
-    def register_routes(self):
-        """Register new routes."""
-        pass
-
-    @staticmethod
-    def register_middleware(self):
-        """Register middleware."""
-
-    @staticmethod
-    def register_event(self):
-        """Register on startup event."""
-
