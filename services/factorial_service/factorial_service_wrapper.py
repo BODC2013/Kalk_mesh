@@ -27,3 +27,4 @@ class FactorialServiceWrapper:
             calculate_value=result,
             traceback=self.__factorial_service.traceback,
         )
+
