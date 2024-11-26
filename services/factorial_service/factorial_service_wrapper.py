@@ -2,7 +2,7 @@ from services.factorial_service.service import FactorialService
 from models.schema import factorial_calculate
 
 __all__ = [
-    "FactorialServiceWrapper"
+    "FactorialServiceWrapper",
 ]
 
 
@@ -14,7 +14,6 @@ class FactorialServiceWrapper:
         self
     ):
         self.__factorial_service: FactorialService = FactorialService()
-        print(f"type after init {type(self.__factorial_service)}")
 
     def pipeline(
         self,

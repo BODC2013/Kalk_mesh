@@ -16,7 +16,9 @@ router = APIRouter(prefix="/factorial", tags=["Test router special for you"])
 )
 def calculate_factorial(
     cmd: factorial_calculate.FactorialCalculateCommand,
+
 ) -> factorial_calculate.FactorialCalculateResponse:
+
     wrapper = FactorialServiceWrapper()
     print(f"Cmd: {cmd}")
-    return wrapper.pipeline(cmd=cmd)
+    return wrapper.execute (cmd=cmd)

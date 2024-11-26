@@ -2,6 +2,7 @@ from typing import List
 from models.schema import factorial_calculate
 
 
+
 class FactorialService:
 
     traceback: List = []

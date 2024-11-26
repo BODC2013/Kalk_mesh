@@ -3,6 +3,7 @@ import typing
 import pydantic
 import typing
 
+
 __all__ = [
     "FactorialCalculateCommand",
     "FactorialCalculateResponse",

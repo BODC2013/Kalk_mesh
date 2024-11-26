@@ -1,12 +1,11 @@
 from unittest import TestProgram
-from Fly_Coco import Calculate
-from Fly_Coco import Test
-from models import CalculateModel, TestModel
-from models import  TestModel
+from services.temporary_resistance.service import Calculate
+from services.temporary_resistance.service import Test
+from models import schema
 
 
 calculate = Calculate(
-    cmd=CalculateModel(
+    cmd=schema.models_class.CalculateModel(
         name="1234",
         steel_grade='09г2с',
         brand="Бе",
@@ -14,8 +13,8 @@ calculate = Calculate(
     )
 )
 test = Test(
-    cmd=TestModel(
-        name="1234",
+    cmd=schema.models_class.TestModel(
+        name="124",
         steel_grade='09г2с',
         brand="Бе",
             )
