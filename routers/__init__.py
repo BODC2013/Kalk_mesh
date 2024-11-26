@@ -1,1 +1,1 @@
-import factorial.te
+import routers.factorial.t
