@@ -14,7 +14,7 @@ class TemporaryResistanceCalculateWrapper:
         thickness_initial_plate: int,
         sample_thickness: int,
         width_thickness: int,
-        temporary_resistance: typing.List[float],
+
     ):
         self.__temporary_resistance_calculate_service = Calculate(
             cmd = models_class.CalculateModel(
@@ -25,7 +25,7 @@ class TemporaryResistanceCalculateWrapper:
                 thickness_initial_plate=thickness_initial_plate,
                 sample_thickness=sample_thickness,
                 width_thickness=width_thickness,
-                temporary_resistance=temporary_resistance
+
             )
         )
         # def execute
@@ -34,4 +34,4 @@ class TemporaryResistanceCalculateWrapper:
         self,
 
     ):
-        self.__temporary_resistance_calculate_service.sorting()
+        return self.__temporary_resistance_calculate_service.sorting()

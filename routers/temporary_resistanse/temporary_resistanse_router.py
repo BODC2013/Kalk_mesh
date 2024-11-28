@@ -1,13 +1,12 @@
 from fastapi import APIRouter, status
-
 from models.schema import models_class
-from services.temporary_resistance import temporary_resistanse_calculate_wrapper
+from services.temporary_resistance.temporary_resistanse_calculate_wrapper import TemporaryResistanceCalculateWrapper
+
 
 __all__ = [
     "router",
 ]
 
-from services.temporary_resistance.temporary_resistanse_calculate_wrapper import TemporaryResistanceCalculateWrapper
 
 router = APIRouter(prefix="/temporary_resistance", tags=["Temporary Resistance"])
 
@@ -20,6 +19,6 @@ router = APIRouter(prefix="/temporary_resistance", tags=["Temporary Resistance"]
 def calculate_temporary_resistance(
     cmd:models_class.CalculateModel
 ) ->models_class.ResponseCalculateModel:
-    wrapper = TemporaryResistanceCalculateWrapper
-    print(f"Cmd: {cmd}")
-    return wrapper.execute(cmd=cmd)
+    wrapper = TemporaryResistanceCalculateWrapper(**cmd.model_dump())
+    print(f"Cmd: {cmd.model_dump()}")
+    return wrapper.execute()
