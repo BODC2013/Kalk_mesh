@@ -1,16 +1,15 @@
-from enum import Enum
+
 from typing import List
 from random import randrange
 from models import schema
 
 
 
+
 #a = "09Г2С"
 #SteelGrade(a).value
 #'09Г2С'
-# class SteelGrade(Enum):
-#     DOPED = '09Г2С'
-#     NODOPED = 'Ст3'
+
 
 class Calculate:
 
@@ -47,10 +46,10 @@ class Calculate:
 #        print("Значение временного сопротивления:", self.temporary_resistance)
 
     def sorting(self):
-        if self.steel_grade.upper() == '09Г2С':
+        if self.steel_grade == schema.models_class.SteelGrade.DOPED:
             standard_resistance = self.temporary_resistance_standart_doped.copy()
             self.bend_angle = self.bend_angle_doped
-        elif self.steel_grade.upper() == 'СТ3':
+        elif self.steel_grade == schema.models_class.SteelGrade.NODOPED:
             standard_resistance = self.temporary_resistance_standart_NOdoped.copy()
             self.bend_angle = self.bend_angle_NOdoped
         else:

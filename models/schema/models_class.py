@@ -6,18 +6,20 @@ import pydantic
 __all__ = [
 
 ]
-
+class SteelGrade(Enum):
+    DOPED = '09Г2С'
+    NODOPED = 'СT3'
 
 
 class CalculateModel(BaseModel):
     name: str = "1235"
-    steel_grade: str
+    steel_grade: SteelGrade
     brand: str
     breaking_force: typing.List[float]
     thickness_initial_plate: float = 8.0
     sample_thickness: float = 8.0
     width_thickness: float = 20.0
-#     ne_obyzatelno: Optional[int]
+
 
 class TestModel(BaseModel):
     name: str = "12356"
