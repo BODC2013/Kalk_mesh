@@ -35,3 +35,5 @@ class TemporaryResistanceCalculateWrapper:
 
     ):
         return self.__temporary_resistance_calculate_service.sorting()
+
+#     !!!!Почему мы запускаем метод сортинг???? как это работает?
