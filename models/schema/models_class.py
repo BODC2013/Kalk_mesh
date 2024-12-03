@@ -33,7 +33,8 @@ class TestModel(BaseModel):
     sample_thickness: float = 8.0
     width_thickness: float = 20.0
 
-# Модель ответа которая придет из temporary_resistanse_router
+# !!!Модель ответа которая придет из temporary_resistanse_router????
+# !!!!или из service???????
 class ResponseCalculateModel(BaseModel):
     name: str
     steel_grade: str

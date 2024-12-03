@@ -4,14 +4,9 @@ from random import randrange
 from models import schema
 
 
-
-
-#a = "09Г2С"
-#SteelGrade(a).value
-#'09Г2С'
-
-
 class Calculate:
+    # справочные данные угла загиба и допустимого диапазона значений временного сопротивления
+    # в зависимости от толщины пластины для функции def sorting
 
     bend_angle_doped = 120
     temporary_resistance_standart_doped = {
@@ -24,7 +19,7 @@ class Calculate:
         (21, 40): [[370, 480]], (41, 100): [[370, 480]]}
 
     bend_angle: int
-
+    # Экспорт из папки schema, файл model_class.py
     def __init__(self, cmd: schema.models_class.CalculateModel):
         self.name = cmd.name
         self.steel_grade = cmd.steel_grade
@@ -38,6 +33,8 @@ class Calculate:
         self.sorting()
         self.res_calculation = {}
 
+    # Расчет значения breaking_forse(временного сопротивления) по формуле ГОСТа в зависимости
+    # от толщины и ширины пластины
     def value_calculator(self):
         for i in self.breaking_force:
             results = (i / (self.sample_thickness * self.width_thickness) * 1000)
@@ -45,6 +42,8 @@ class Calculate:
 
 #        print("Значение временного сопротивления:", self.temporary_resistance)
 
+# выбор справочных значений для сравнения временного сопротивления и угла загиба в градусах
+    # в зависимости от марки стали (легированная DOPED/не легированная NODOPED)
     def sorting(self):
         if self.steel_grade == schema.models_class.SteelGrade.DOPED:
             standard_resistance = self.temporary_resistance_standart_doped.copy()
@@ -55,6 +54,7 @@ class Calculate:
         else:
             print('Введите корректную марку стали или обновите справочник')
             raise ValueError
+        # сравнение результатов расчета на попадание в диапазон значений из справочника
         for thickness_range in standard_resistance.keys():
             if thickness_range[0] <= self.thickness_initial_plate <= thickness_range[1]:
                 for i in standard_resistance[(thickness_range)]:
@@ -64,6 +64,7 @@ class Calculate:
                         else:
 
                             print('Значение', temp, 'НЕ СООТВЕТСТВУЕТ ГОСТу')
+        # Возврат модели с результатами расчетов.
         return schema.models_class.ResponseCalculateModel(
             name =self.name,
             steel_grade =self.steel_grade,
